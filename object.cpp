@@ -28,7 +28,7 @@ namespace Objects {
 	void Object::move(float dist) {
 		this->x += dist * cos(this->rotUp) * cos(this->rotSide);
 		this->y += dist * sin(this->rotUp);
-		this->z += dist * cos(this->rotUp) * sin(this->rotSide);
+		this->z -= dist * cos(this->rotUp) * sin(this->rotSide);
 	}
 
 	void Object::draw(ShaderProgram* sp) {
@@ -37,7 +37,7 @@ namespace Objects {
 		Models::sphere.drawSolid();
 	}
 
-	void Object::performMove(float deltaTime) {
+	void Object::performMove(float time, float deltaTime) {
 		// Objects don't move on their own
 	}
 }

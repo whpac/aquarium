@@ -43,7 +43,7 @@ namespace Scene {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glm::mat4 V = glm::lookAt(
-			glm::vec3(0.0f, 0.0f, -5.0f),
+			glm::vec3(0.0f, 0.0f, -25.0f),
 			glm::vec3(0.0f, 0.0f, 0.0f),
 			glm::vec3(0.0f, 1.0f, 0.0f));
 		glm::mat4 P = glm::perspective(50.0f * PI / 180.0f, wnd_ratio, 1.0f, 50.0f);
@@ -59,9 +59,9 @@ namespace Scene {
 		glfwSwapBuffers(window);
 	}
 
-	void SceneManager::performMoves(float deltaTime) {
+	void SceneManager::performMoves(float time, float deltaTime) {
 		for (auto& object : objects) {
-			object->performMove(deltaTime);
+			object->performMove(time, deltaTime);
 		}
 	}
 }

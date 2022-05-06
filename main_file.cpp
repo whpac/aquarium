@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
 #include "allmodels.h"
 #include "constants.h"
 #include "fish.h"
@@ -35,6 +36,7 @@ void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
 
 int main(void)
 {
+	srand(time(nullptr));
 	glfwSetErrorCallback(error_callback);//Register error processing callback procedure
 
 	if (!glfwInit()) { //Initialize GLFW library
@@ -72,19 +74,21 @@ int main(void)
 	scene_mgr.addObject(obj);*/
 
 	auto fish = new Objects::Fish();
-	fish->setPosition(0, 0, 0);
-	fish->setRotation(0, PI / 6);
+	scene_mgr.addObject(fish);
+
+	fish = new Objects::Fish();
 	scene_mgr.addObject(fish);
 
 	glfwSetTime(0);
+	double lastTime = 0;
 
 	//Main application loop
 	while (!glfwWindowShouldClose(scene_mgr.window)) //As long as the window shouldnt be closed yet...
 	{
 		scene_mgr.draw();
 		double currentTime = glfwGetTime();
-		scene_mgr.performMoves(currentTime);
-		glfwSetTime(0);
+		scene_mgr.performMoves(currentTime, currentTime - lastTime);
+		lastTime = currentTime;
 		glfwPollEvents();
 	}
 
