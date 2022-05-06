@@ -81,9 +81,10 @@ int main(void)
 	//Main application loop
 	while (!glfwWindowShouldClose(scene_mgr.window)) //As long as the window shouldnt be closed yet...
 	{
-		double currentTime = glfwGetTime();
-		glfwSetTime(0);
 		scene_mgr.draw();
+		double currentTime = glfwGetTime();
+		scene_mgr.performMoves(currentTime);
+		glfwSetTime(0);
 		glfwPollEvents();
 	}
 

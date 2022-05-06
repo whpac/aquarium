@@ -7,6 +7,7 @@ namespace Objects {
     class Fish : public Object {
 
         virtual void draw(ShaderProgram* sp) override;
+        virtual void performMove(float deltaTime) override;
     };
 }
 

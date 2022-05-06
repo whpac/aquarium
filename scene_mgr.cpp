@@ -58,5 +58,11 @@ namespace Scene {
 
 		glfwSwapBuffers(window);
 	}
+
+	void SceneManager::performMoves(float deltaTime) {
+		for (auto& object : objects) {
+			object->performMove(deltaTime);
+		}
+	}
 }
 

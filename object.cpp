@@ -36,4 +36,8 @@ namespace Objects {
 		glUniformMatrix4fv(sp->u("M"), 1, false, glm::value_ptr(M));
 		Models::sphere.drawSolid();
 	}
+
+	void Object::performMove(float deltaTime) {
+		// Objects don't move on their own
+	}
 }

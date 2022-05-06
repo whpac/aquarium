@@ -17,6 +17,8 @@ namespace Objects {
 		void setPosition(float x, float y, float z);
 		void setRotation(float side, float up);
 		void move(float dist);
+
+		virtual void performMove(float deltaTime);
 		virtual void draw(ShaderProgram* sp);
 	};
 }
