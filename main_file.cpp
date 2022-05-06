@@ -8,8 +8,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include "constants.h"
 #include "allmodels.h"
+#include "constants.h"
+#include "fish.h"
 #include "lodepng.h"
 #include "shaderprogram.h"
 #include "scene_mgr.h"
@@ -62,13 +63,18 @@ int main(void)
 	scene_mgr.init();
 	scene_mgr.setShaderProgram(spLambert);
 
-	auto obj = new Objects::Object();
+	/*auto obj = new Objects::Object();
 	obj->setPosition(1, 0, 0);
 	scene_mgr.addObject(obj);
 
 	obj = new Objects::Object();
 	obj->setPosition(0, 1, 0);
-	scene_mgr.addObject(obj);
+	scene_mgr.addObject(obj);*/
+
+	auto fish = new Objects::Fish();
+	fish->setPosition(0, 0, 0);
+	fish->setRotation(0, PI / 6);
+	scene_mgr.addObject(fish);
 
 	glfwSetTime(0);
 

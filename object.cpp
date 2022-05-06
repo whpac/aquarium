@@ -8,6 +8,8 @@ namespace Objects {
 	glm::mat4 Object::makePositionMatrix() {
 		glm::mat4 M(1.0f);
 		M = glm::translate(M, glm::vec3(x, y, z));
+		M = glm::rotate(M, rotSide, glm::vec3(0, 1, 0));
+		M = glm::rotate(M, rotUp, glm::vec3(0, 0, 1));
 		return M;
 	}
 
@@ -15,6 +17,11 @@ namespace Objects {
 		this->x = x;
 		this->y = y;
 		this->z = z;
+	}
+
+	void Object::setRotation(float side, float up) {
+		this->rotSide = side;
+		this->rotUp = up;
 	}
 
 	void Object::draw(ShaderProgram* sp) {
