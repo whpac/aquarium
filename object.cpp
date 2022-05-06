@@ -1,6 +1,7 @@
 #include "object.h"
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <math.h>
 #include "allmodels.h"
 
 namespace Objects {
@@ -22,6 +23,12 @@ namespace Objects {
 	void Object::setRotation(float side, float up) {
 		this->rotSide = side;
 		this->rotUp = up;
+	}
+
+	void Object::move(float dist) {
+		this->x += dist * cos(this->rotUp) * cos(this->rotSide);
+		this->y += dist * sin(this->rotUp);
+		this->z += dist * cos(this->rotUp) * sin(this->rotSide);
 	}
 
 	void Object::draw(ShaderProgram* sp) {
