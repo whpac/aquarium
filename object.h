@@ -12,9 +12,14 @@ namespace Objects {
 
 	public:
 		float x = 0, y = 0, z = 0;
+		float rotSide = 0, rotUp = 0;
 
 		void setPosition(float x, float y, float z);
-		void draw(ShaderProgram* sp);
+		void setRotation(float side, float up);
+		void move(float dist);
+
+		virtual void performMove(float time, float deltaTime);
+		virtual void draw(ShaderProgram* sp);
 	};
 }
 

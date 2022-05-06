@@ -8,8 +8,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include "constants.h"
+#include <time.h>
 #include "allmodels.h"
+#include "constants.h"
+#include "fish.h"
 #include "lodepng.h"
 #include "shaderprogram.h"
 #include "scene_mgr.h"
@@ -34,6 +36,7 @@ void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
 
 int main(void)
 {
+	srand(time(nullptr));
 	glfwSetErrorCallback(error_callback);//Register error processing callback procedure
 
 	if (!glfwInit()) { //Initialize GLFW library
@@ -62,22 +65,30 @@ int main(void)
 	scene_mgr.init();
 	scene_mgr.setShaderProgram(spLambert);
 
-	auto obj = new Objects::Object();
+	/*auto obj = new Objects::Object();
 	obj->setPosition(1, 0, 0);
 	scene_mgr.addObject(obj);
 
 	obj = new Objects::Object();
 	obj->setPosition(0, 1, 0);
-	scene_mgr.addObject(obj);
+	scene_mgr.addObject(obj);*/
+
+	auto fish = new Objects::Fish();
+	scene_mgr.addObject(fish);
+
+	fish = new Objects::Fish();
+	scene_mgr.addObject(fish);
 
 	glfwSetTime(0);
+	double lastTime = 0;
 
 	//Main application loop
 	while (!glfwWindowShouldClose(scene_mgr.window)) //As long as the window shouldnt be closed yet...
 	{
-		double currentTime = glfwGetTime();
-		glfwSetTime(0);
 		scene_mgr.draw();
+		double currentTime = glfwGetTime();
+		scene_mgr.performMoves(currentTime, currentTime - lastTime);
+		lastTime = currentTime;
 		glfwPollEvents();
 	}
 

@@ -27,6 +27,7 @@ namespace Scene {
 		void setShaderProgram(ShaderProgram* sp);
 
 		void draw();
+		void performMoves(float time, float deltaTime);
 
 		void addObject(Object* obj);
 	};
