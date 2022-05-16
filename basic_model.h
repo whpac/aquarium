@@ -13,8 +13,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MODEL_H
-#define MODEL_H
+#ifndef BASIC_MODEL_H
+#define BASIC_MODEL_H
 
 #include <GL/glew.h>
 #include <vector>
