@@ -13,14 +13,29 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "model.h"
+#ifndef MODEL_H
+#define MODEL_H
+
+#include <GL/glew.h>
+#include <vector>
+#include <glm/glm.hpp>
+#include <GLFW/glfw3.h>
+#include "constants.h"
 
 namespace Models {
-	void Model::drawWire(bool smooth) {
-		glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
-		drawSolid(smooth);
-
-		glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
-	}
+	class BasicModel {
+		public:
+			int vertexCount;
+			float *vertices;
+			float *normals;
+			float *vertexNormals;
+			float *texCoords;
+			float *colors;
+					
+			virtual void drawSolid(bool smooth)=0;
+			virtual void drawWire(bool smooth=false);
+	};
 }
+
+#endif

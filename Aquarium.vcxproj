@@ -24,7 +24,7 @@
     <ClInclude Include="cube.h" />
     <ClInclude Include="fish.h" />
     <ClInclude Include="lodepng.h" />
-    <ClInclude Include="model.h" />
+    <ClInclude Include="basic_model.h" />
     <ClInclude Include="model_loader.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="scene_mgr.h" />
@@ -38,7 +38,7 @@
     <ClCompile Include="fish.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main_file.cpp" />
-    <ClCompile Include="model.cpp" />
+    <ClCompile Include="basic_model.cpp" />
     <ClCompile Include="model_loader.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="scene_mgr.cpp" />

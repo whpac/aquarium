@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //Culling GL_CW
 //TBN friendly
 
-#include "model.h"
+#include "basic_model.h"
 
 namespace Models {
 	namespace CubeInternal {
@@ -37,7 +37,7 @@ namespace Models {
 		extern unsigned int vertexCount;
 	} 
 	
-	class Cube: public Model {
+	class Cube: public BasicModel {
 		public:
 			Cube();
 			virtual ~Cube();

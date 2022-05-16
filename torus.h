@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //texCoords - texturing coordinates
 
 
-#include "model.h"
+#include "basic_model.h"
 
 
 namespace Models {
@@ -31,7 +31,7 @@ namespace Models {
 	using namespace std;
 	using namespace glm;
 	
-	class Torus: public Model {
+	class Torus: public BasicModel {
 	
 		public:
 			Torus();

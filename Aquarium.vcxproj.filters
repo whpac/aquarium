@@ -27,7 +27,7 @@
     <ClInclude Include="lodepng.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="model.h">
+    <ClInclude Include="basic_model.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="sphere.h">
@@ -65,7 +65,7 @@
     <ClCompile Include="main_file.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="model.cpp">
+    <ClCompile Include="basic_model.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="shaderprogram.cpp">
