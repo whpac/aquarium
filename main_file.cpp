@@ -76,8 +76,8 @@ int main(void)
 	auto fish = new Objects::Fish();
 	scene_mgr.addObject(fish);
 
-	fish = new Objects::Fish();
-	scene_mgr.addObject(fish);
+	//fish = new Objects::Fish();
+	//scene_mgr.addObject(fish);
 
 	glfwSetTime(0);
 	double lastTime = 0;
