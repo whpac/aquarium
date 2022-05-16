@@ -15,6 +15,7 @@
 #include "lodepng.h"
 #include "shaderprogram.h"
 #include "scene_mgr.h"
+#include "model.h"
 
 #define WND_WIDTH 1000
 #define WND_HEIGHT 800
@@ -66,19 +67,9 @@ int main(void)
 	GLuint tex = scene_mgr.readTexture("clownfish.png");
 	scene_mgr.setShaderProgram(spLambertTextured);
 
-	/*auto obj = new Objects::Object();
-	obj->setPosition(1, 0, 0);
-	scene_mgr.addObject(obj);
-
-	obj = new Objects::Object();
-	obj->setPosition(0, 1, 0);
-	scene_mgr.addObject(obj);*/
-
-	auto fish = new Objects::Fish(tex);
+	auto clownfish_model = Objects::Model("clownfish.obj");
+	auto fish = new Objects::Fish(tex, clownfish_model);
 	scene_mgr.addObject(fish);
-
-	//fish = new Objects::Fish();
-	//scene_mgr.addObject(fish);
 
 	glfwSetTime(0);
 	double lastTime = 0;
