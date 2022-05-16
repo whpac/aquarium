@@ -5,6 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "constants.h"
 #include "allmodels.h"
+#include "lodepng.h"
 
 namespace Scene {
 	SceneManager::SceneManager(int wnd_width, int wnd_height){
@@ -19,6 +20,8 @@ namespace Scene {
 	void SceneManager::init() {
 		initShaders();
 		glEnable(GL_DEPTH_TEST);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
 	void SceneManager::destroy() {
@@ -39,11 +42,11 @@ namespace Scene {
 	}
 
 	void SceneManager::draw() {
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glm::mat4 V = glm::lookAt(
-			glm::vec3(0.0f, 0.0f, -25.0f),
+			glm::vec3(0.0f, 0.0f, -5.0f),
 			glm::vec3(0.0f, 0.0f, 0.0f),
 			glm::vec3(0.0f, 1.0f, 0.0f));
 		glm::mat4 P = glm::perspective(50.0f * PI / 180.0f, wnd_ratio, 1.0f, 50.0f);
@@ -63,6 +66,27 @@ namespace Scene {
 		for (auto& object : objects) {
 			object->performMove(time, deltaTime);
 		}
+	}
+
+	GLuint SceneManager::readTexture(const char* filename) {
+		GLuint tex;
+		glActiveTexture(GL_TEXTURE0);
+		//Read into computers memory
+		std::vector<unsigned char> image; //Allocate memory
+		unsigned width, height; //Variables for image size
+		//Read the image
+		unsigned error = lodepng::decode(image, width, height, filename);
+		//Import to graphics card memory
+		glGenTextures(1, &tex); //Initialize one handle
+		glBindTexture(GL_TEXTURE_2D, tex); //Activate handle
+		//Copy image to graphics cards memory reprezented by the active handle
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0,
+			GL_RGBA, GL_UNSIGNED_BYTE, (unsigned char*)image.data());
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		return tex;
 	}
 }
 

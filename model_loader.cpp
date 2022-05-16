@@ -70,12 +70,13 @@ bool loadObj(const char* path,
     for (unsigned int i = 0; i < texCoordsIndices.size(); i++) {
         unsigned int texCoordIndex = texCoordsIndices[i];
         glm::vec2 tex = temp_tex_coords[texCoordIndex - 1];
-        out_tex_coords.insert(out_tex_coords.end(), { tex.x, tex.y });
+        out_tex_coords.insert(out_tex_coords.end(), { tex.x, 1 - tex.y });
     }
     // For each vertex normal of each triangle
     for (unsigned int i = 0; i < normalIndices.size(); i++) {
         unsigned int normalIndex = normalIndices[i];
         glm::vec3 normal = temp_normals[normalIndex - 1];
+        normal = glm::normalize(normal);
         out_normals.insert(out_normals.end(), { normal.x, normal.y, normal.z, 0.0 });
     }
 

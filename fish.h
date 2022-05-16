@@ -8,8 +8,9 @@ namespace Objects {
     class Fish : public Object {
     protected:
         std::vector<float> vertices;
-        std::vector<float> uvs;
+        std::vector<float> texture_coords;
         std::vector<float> normals;
+        GLuint texture;
 
         float turnStart = -1;
         float turnEnd = -1;
@@ -17,7 +18,7 @@ namespace Objects {
         float rotateTarget = 0;
 
     public:
-        Fish();
+        Fish(GLuint texture);
         virtual void draw(ShaderProgram* sp) override;
         virtual void performMove(float time, float deltaTime) override;
     };

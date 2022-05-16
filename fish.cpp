@@ -7,20 +7,17 @@
 
 namespace Objects {
 
-	Fish::Fish() {
-		bool res = loadObj("D:\\cf.obj", vertices, uvs, normals);
+	Fish::Fish(GLuint texture) {
+		this->texture = texture;
+		bool res = loadObj("clownfish.obj", vertices, texture_coords, normals);
 		if (!res) {
 			std::cout << "Failed to load model" << std::endl;
 		}
 		else {
 			std::cout << "Read data successfully!" << std::endl;
-			std::cout << vertices.size() << " vertices" << std::endl;
-			std::cout << uvs.size() << " UVs" << std::endl;
-			std::cout << normals.size() << " normals" << std::endl;
-
-			/*for (int i = 0; i < 16; i++) {
-				std::cout << vertices[i] << std::endl;
-			}*/
+			std::cout << vertices.size() / 4 << " vertices" << std::endl;
+			std::cout << texture_coords.size() / 2 << " UVs" << std::endl;
+			std::cout << normals.size() / 4 << " normals" << std::endl;
 		}
 	}
 
@@ -33,13 +30,20 @@ namespace Objects {
 
 		glEnableVertexAttribArray(sp->a("vertex"));
 		glEnableVertexAttribArray(sp->a("normal"));
+		glEnableVertexAttribArray(sp->a("texCoord"));
 
 		glVertexAttribPointer(sp->a("vertex"), 4, GL_FLOAT, false, 0, &vertices[0]);
 		glVertexAttribPointer(sp->a("normal"), 4, GL_FLOAT, false, 0, &normals[0]);
+		glVertexAttribPointer(sp->a("texCoord"), 2, GL_FLOAT, false, 0, &texture_coords[0]);
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texture);
+		glUniform1i(sp->u("tex"), 0);
 		glDrawArrays(GL_TRIANGLES, 0, vertices.size() / 4);
 
-		glEnableVertexAttribArray(sp->a("vertex"));
-		glEnableVertexAttribArray(sp->a("normal"));
+		glDisableVertexAttribArray(sp->a("vertex"));
+		glDisableVertexAttribArray(sp->a("normal"));
+		glDisableVertexAttribArray(sp->a("texCoord"));
 	}
 
 	void Fish::performMove(float time, float deltaTime) {

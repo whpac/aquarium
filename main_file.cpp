@@ -63,7 +63,8 @@ int main(void)
 
 	// Initialize the scene and set shader program
 	scene_mgr.init();
-	scene_mgr.setShaderProgram(spLambert);
+	GLuint tex = scene_mgr.readTexture("clownfish.png");
+	scene_mgr.setShaderProgram(spLambertTextured);
 
 	/*auto obj = new Objects::Object();
 	obj->setPosition(1, 0, 0);
@@ -73,7 +74,7 @@ int main(void)
 	obj->setPosition(0, 1, 0);
 	scene_mgr.addObject(obj);*/
 
-	auto fish = new Objects::Fish();
+	auto fish = new Objects::Fish(tex);
 	scene_mgr.addObject(fish);
 
 	//fish = new Objects::Fish();
@@ -93,6 +94,7 @@ int main(void)
 	}
 
 	scene_mgr.destroy();
+	glDeleteTextures(1, &tex);
 	glfwTerminate(); //Free GLFW resources
 	exit(EXIT_SUCCESS);
 }

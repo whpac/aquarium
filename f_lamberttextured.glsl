@@ -10,6 +10,8 @@ in float i_nl;
 in vec2 i_tc;
 
 void main(void) {
-    vec4 color=texture(tex,i_tc);
+	vec4 color=texture(tex,i_tc);
+	if(color.a < 0.1)
+		discard;
 	pixelColor=vec4(color.rgb*i_nl,color.a);
 }

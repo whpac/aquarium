@@ -25,6 +25,7 @@ namespace Scene {
 		void destroy();
 
 		void setShaderProgram(ShaderProgram* sp);
+		GLuint readTexture(const char* filename);
 
 		void draw();
 		void performMoves(float time, float deltaTime);
