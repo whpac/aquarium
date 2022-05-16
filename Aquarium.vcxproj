@@ -24,7 +24,9 @@
     <ClInclude Include="cube.h" />
     <ClInclude Include="fish.h" />
     <ClInclude Include="lodepng.h" />
+    <ClInclude Include="basic_model.h" />
     <ClInclude Include="model.h" />
+    <ClInclude Include="model_loader.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="scene_mgr.h" />
     <ClInclude Include="shaderprogram.h" />
@@ -37,7 +39,9 @@
     <ClCompile Include="fish.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main_file.cpp" />
+    <ClCompile Include="basic_model.cpp" />
     <ClCompile Include="model.cpp" />
+    <ClCompile Include="model_loader.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="scene_mgr.cpp" />
     <ClCompile Include="shaderprogram.cpp" />
@@ -48,8 +52,10 @@
   <ItemGroup>
     <None Include="f_constant.glsl" />
     <None Include="f_lambert.glsl" />
+    <None Include="f_lamberttextured.glsl" />
     <None Include="v_constant.glsl" />
     <None Include="v_lambert.glsl" />
+    <None Include="v_lamberttextured.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

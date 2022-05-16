@@ -1,26 +1,48 @@
-/*
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 #include "model.h"
+#include <glm/gtc/type_ptr.hpp>
 
-namespace Models {
-	void Model::drawWire(bool smooth) {
-		glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+namespace Objects {
 
-		drawSolid(smooth);
+	Model::Model() {}
 
-		glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+	Model::Model(const char* path) {
+		successful = loadObj(path, vertices, texture_coords, normals);
+	}
+
+	float* Model::getVerticesPointer() {
+		return &vertices[0];
+	}
+
+	float* Model::getTextureCoordsPointer() {
+		return &texture_coords[0];
+	}
+
+	float* Model::getNormalsPointer() {
+		return &normals[0];
+	}
+
+	int Model::getVertexCount() {
+		return vertices.size() / 4;
+	}
+
+	void Model::draw(ShaderProgram* sp, GLuint texture, glm::mat4 position_matrix) {
+		glUniformMatrix4fv(sp->u("M"), 1, false, glm::value_ptr(position_matrix));
+
+		glEnableVertexAttribArray(sp->a("vertex"));
+		glEnableVertexAttribArray(sp->a("normal"));
+		glEnableVertexAttribArray(sp->a("texCoord"));
+
+		glVertexAttribPointer(sp->a("vertex"), 4, GL_FLOAT, false, 0, getVerticesPointer());
+		glVertexAttribPointer(sp->a("normal"), 4, GL_FLOAT, false, 0, getNormalsPointer());
+		glVertexAttribPointer(sp->a("texCoord"), 2, GL_FLOAT, false, 0, getTextureCoordsPointer());
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texture);
+		glUniform1i(sp->u("tex"), 0);
+		glDrawArrays(GL_TRIANGLES, 0, getVertexCount());
+
+		glDisableVertexAttribArray(sp->a("vertex"));
+		glDisableVertexAttribArray(sp->a("normal"));
+		glDisableVertexAttribArray(sp->a("texCoord"));
 	}
 }

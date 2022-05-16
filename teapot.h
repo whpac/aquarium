@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //TBN friendly
 //Culling GL_CW
 
-#include "model.h"
+#include "basic_model.h"
 
 namespace Models {
 		
@@ -40,7 +40,7 @@ namespace Models {
 		extern unsigned int vertexCount;
 	} 
  
-	class Teapot: public Model {
+	class Teapot: public BasicModel {
 		public:
 			Teapot();			
 			virtual ~Teapot();

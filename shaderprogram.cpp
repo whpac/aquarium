@@ -17,10 +17,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 ShaderProgram *spLambert;
+ShaderProgram *spLambertTextured;
 ShaderProgram *spConstant;
 
 void initShaders(){
     spLambert=new ShaderProgram("v_lambert.glsl",NULL,"f_lambert.glsl");
+	spLambertTextured = new ShaderProgram("v_lamberttextured.glsl", NULL, "f_lamberttextured.glsl");
     spConstant=new ShaderProgram("v_constant.glsl",NULL,"f_constant.glsl");
 }
 

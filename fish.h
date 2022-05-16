@@ -2,6 +2,8 @@
 #define FISH_H
 
 #include "object.h"
+#include "model.h"
+#include<vector>
 
 namespace Objects {
     class Fish : public Object {
@@ -12,6 +14,7 @@ namespace Objects {
         float rotateTarget = 0;
 
     public:
+        Fish(GLuint texture, Model& model) : Object(texture, model) {}
         virtual void draw(ShaderProgram* sp) override;
         virtual void performMove(float time, float deltaTime) override;
     };

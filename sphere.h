@@ -25,13 +25,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //texCoords - texturing coordinates
 
 
-#include "model.h"
+#include "basic_model.h"
 namespace Models {
 	
 	using namespace std;
 	using namespace glm;
 	
-	class Sphere: public Model {
+	class Sphere: public BasicModel {
 	
 		public:
 			Sphere();

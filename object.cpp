@@ -6,6 +6,11 @@
 
 namespace Objects {
 
+	Object::Object(GLuint texture, Model& model) {
+		this->texture = texture;
+		this->model = model;
+	}
+
 	glm::mat4 Object::makePositionMatrix() {
 		glm::mat4 M(1.0f);
 		M = glm::translate(M, glm::vec3(x, y, z));
@@ -29,12 +34,6 @@ namespace Objects {
 		this->x += dist * cos(this->rotUp) * cos(this->rotSide);
 		this->y += dist * sin(this->rotUp);
 		this->z -= dist * cos(this->rotUp) * sin(this->rotSide);
-	}
-
-	void Object::draw(ShaderProgram* sp) {
-		auto M = makePositionMatrix();
-		glUniformMatrix4fv(sp->u("M"), 1, false, glm::value_ptr(M));
-		Models::sphere.drawSolid();
 	}
 
 	void Object::performMove(float time, float deltaTime) {

@@ -1,15 +1,18 @@
 #include "fish.h"
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include "allmodels.h"
+#include<glm/gtc/type_ptr.hpp>
+#include<glm/gtc/matrix_transform.hpp>
+#include "model_loader.h"
+#include "constants.h"
+#include<iostream>
 
 namespace Objects {
 
 	void Fish::draw(ShaderProgram* sp) {
 		auto M = makePositionMatrix();
-		M = glm::scale(M, glm::vec3(1, 1, 0.2));
-		glUniformMatrix4fv(sp->u("M"), 1, false, glm::value_ptr(M));
-		Models::cube.drawSolid();
+		M = glm::rotate(M, -PI / 2, glm::vec3(0, 1, 0));
+		M = glm::scale(M, glm::vec3(0.5, 0.5, 0.5));
+
+		model.draw(sp, texture, M);
 	}
 
 	void Fish::performMove(float time, float deltaTime) {
