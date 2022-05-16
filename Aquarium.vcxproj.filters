@@ -51,6 +51,9 @@
     <ClInclude Include="fish.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="model_loader.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cube.cpp">
@@ -86,6 +89,9 @@
     <ClCompile Include="fish.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="model_loader.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="f_constant.glsl">
@@ -98,6 +104,12 @@
       <Filter>Pliki zasobów</Filter>
     </None>
     <None Include="v_lambert.glsl">
+      <Filter>Pliki zasobów</Filter>
+    </None>
+    <None Include="f_lamberttextured.glsl">
+      <Filter>Pliki zasobów</Filter>
+    </None>
+    <None Include="v_lamberttextured.glsl">
       <Filter>Pliki zasobów</Filter>
     </None>
   </ItemGroup>
