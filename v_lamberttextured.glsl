@@ -6,7 +6,8 @@ uniform mat4 V;
 uniform mat4 M;
 
 
-uniform vec4 lightDir=vec4(0,0,1,0);
+uniform vec4 lightDir = vec4(0, 0, 1, 0);
+uniform vec4 obsPos = vec4(0, 0, 0, 1);
 
 //Attributes
 layout (location=0) in vec4 vertex; //vertex coordinates in model space
@@ -23,6 +24,10 @@ void main(void) {
 
     mat4 G=mat4(inverse(transpose(mat3(M))));
     vec4 n=normalize(V*G*normal);
+
+    if(dot(n, obsPos - V*M*vertex) < 0){
+        n = -n;
+    }
 
     i_nl=clamp(dot(n,lightDir),0,1);
     i_tc=texCoord;
