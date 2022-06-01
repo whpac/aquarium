@@ -22,13 +22,13 @@ out float i_nl;
 void main(void) {
     gl_Position=P*V*M*vertex;
 
-    mat4 G=mat4(inverse(transpose(mat3(M))));
-    vec4 n=normalize(V*G*normal);
+    mat4 G = mat4(inverse(transpose(mat3(M))));
+    vec4 n = normalize(V*G*normal);
 
     if(dot(n, obsPos - V*M*vertex) < 0){
         n = -n;
     }
 
-    i_nl=clamp(dot(n,lightDir),0,1);
-    i_tc=texCoord;
+    i_nl = clamp(dot(n, lightDir), 0, 1);
+    i_tc = texCoord;
 }
