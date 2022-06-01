@@ -1,122 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Pliki źródłowe">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Pliki nagłówkowe">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Pliki zasobów">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="allmodels.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="constants.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="cube.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="lodepng.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="basic_model.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="sphere.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="teapot.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="torus.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="shaderprogram.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="scene_mgr.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="object.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="fish.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="model_loader.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="model.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="cube.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="lodepng.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="main_file.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="basic_model.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="shaderprogram.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="sphere.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="teapot.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="torus.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="scene_mgr.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="object.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="lodepng.cpp" />
+    <ClCompile Include="main_file.cpp" />
+    <ClCompile Include="model.cpp">
+      <Filter>Objects</Filter>
     </ClCompile>
     <ClCompile Include="fish.cpp">
-      <Filter>Pliki źródłowe</Filter>
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>Objects</Filter>
     </ClCompile>
     <ClCompile Include="model_loader.cpp">
-      <Filter>Pliki źródłowe</Filter>
+      <Filter>Objects</Filter>
     </ClCompile>
-    <ClCompile Include="model.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="scene_mgr.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="basic_model.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="cube.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="sphere.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="teapot.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="torus.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="shaderprogram.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="constants.h" />
+    <ClInclude Include="global.h" />
+    <ClInclude Include="lodepng.h" />
+    <ClInclude Include="model.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="fish.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="model_loader.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="scene_mgr.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="allmodels.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="basic_model.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="cube.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="sphere.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="teapot.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="torus.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="shaderprogram.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="f_constant.glsl">
-      <Filter>Pliki zasobów</Filter>
-    </None>
-    <None Include="f_lambert.glsl">
-      <Filter>Pliki zasobów</Filter>
-    </None>
-    <None Include="v_constant.glsl">
-      <Filter>Pliki zasobów</Filter>
-    </None>
-    <None Include="v_lambert.glsl">
-      <Filter>Pliki zasobów</Filter>
+      <Filter>Shader</Filter>
     </None>
     <None Include="f_lamberttextured.glsl">
-      <Filter>Pliki zasobów</Filter>
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="f_lambert.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="v_constant.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="v_lambert.glsl">
+      <Filter>Shader</Filter>
     </None>
     <None Include="v_lamberttextured.glsl">
-      <Filter>Pliki zasobów</Filter>
+      <Filter>Shader</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{443a8fa3-8729-4874-b7fa-afac8a0497cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{c05fb20c-9c53-4add-aff8-eaef238694a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{077a5d15-7f2d-4050-8b19-d458229052a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{42f32b48-84ae-4d59-ba3a-04fbe8a494a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

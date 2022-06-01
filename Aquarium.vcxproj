@@ -23,6 +23,7 @@
     <ClInclude Include="constants.h" />
     <ClInclude Include="cube.h" />
     <ClInclude Include="fish.h" />
+    <ClInclude Include="global.h" />
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="basic_model.h" />
     <ClInclude Include="model.h" />
