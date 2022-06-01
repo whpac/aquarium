@@ -51,12 +51,8 @@
     <ClCompile Include="torus.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="f_constant.glsl" />
-    <None Include="f_lambert.glsl" />
-    <None Include="f_lamberttextured.glsl" />
-    <None Include="v_constant.glsl" />
-    <None Include="v_lambert.glsl" />
-    <None Include="v_lamberttextured.glsl" />
+    <None Include="shader_f.glsl" />
+    <None Include="shader_v.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

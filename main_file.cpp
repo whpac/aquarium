@@ -159,12 +159,12 @@ int main(void)
 		exit(EXIT_FAILURE);
 	}
 
-	
+	ShaderProgram* sp = new ShaderProgram("shader_v.glsl", NULL, "shader_f.glsl");
 
 	// Initialize the scene and set shader program
 	scene_mgr.init();
 	GLuint tex = scene_mgr.readTexture("clownfish.png");
-	scene_mgr.setShaderProgram(spLambertTextured);
+	scene_mgr.setShaderProgram(sp);
 
 	auto clownfish_model = Objects::Model("clownfish.obj");
 	auto fish = new Objects::Fish(tex, clownfish_model);
@@ -201,6 +201,8 @@ int main(void)
 	}
 
 	scene_mgr.destroy();
+	delete sp;
+
 	glDeleteTextures(1, &tex);
 	glfwTerminate(); //Free GLFW resources
 	exit(EXIT_SUCCESS);

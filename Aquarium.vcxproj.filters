@@ -79,22 +79,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="f_constant.glsl">
+    <None Include="shader_f.glsl">
       <Filter>Shader</Filter>
     </None>
-    <None Include="f_lamberttextured.glsl">
-      <Filter>Shader</Filter>
-    </None>
-    <None Include="f_lambert.glsl">
-      <Filter>Shader</Filter>
-    </None>
-    <None Include="v_constant.glsl">
-      <Filter>Shader</Filter>
-    </None>
-    <None Include="v_lambert.glsl">
-      <Filter>Shader</Filter>
-    </None>
-    <None Include="v_lamberttextured.glsl">
+    <None Include="shader_v.glsl">
       <Filter>Shader</Filter>
     </None>
   </ItemGroup>

@@ -17,11 +17,9 @@ namespace Scene {
 
 		glfwMakeContextCurrent(window);
 		glfwSwapInterval(1);
-
 	}
 
 	void SceneManager::init() {
-		initShaders();
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -32,7 +30,6 @@ namespace Scene {
 			delete object;
 		}
 		objects.clear();
-		freeShaders();
 		glfwDestroyWindow(this->window);
 	}
 
