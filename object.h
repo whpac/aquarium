@@ -24,7 +24,7 @@ namespace Objects {
 		void move(float dist);
 
 		virtual void performMove(float time, float deltaTime);
-		virtual void draw(ShaderProgram* sp) = 0;
+		virtual void draw(ShaderProgram* sp);
 	};
 }
 

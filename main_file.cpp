@@ -16,7 +16,8 @@
 #include "lodepng.h"
 #include "shaderprogram.h"
 #include "scene_mgr.h"
-#include "model.h"
+#include "file_model.h"
+#include "ground_model.h"
 #include "global.h"
 #include<glm/gtx/rotate_vector.hpp>
 #include<glm/gtx/vector_angle.hpp>
@@ -163,12 +164,18 @@ int main(void)
 
 	// Initialize the scene and set shader program
 	scene_mgr.init();
-	GLuint tex = scene_mgr.readTexture("clownfish.png");
+	GLuint tex = scene_mgr.readTexture("textures/clownfish.png");
+	GLuint tex_sand = scene_mgr.readTexture("textures/Sand_COLOR.png");
 	scene_mgr.setShaderProgram(sp);
 
-	auto clownfish_model = Objects::Model("clownfish.obj");
+	auto clownfish_model = Objects::FileModel("clownfish.obj");
 	auto fish = new Objects::Fish(tex, clownfish_model);
 	scene_mgr.addObject(fish);
+
+	auto ground_model = Objects::GroundModel();
+	auto ground = new Objects::Object(tex_sand, ground_model);
+	ground->setPosition(0, -5, 0);
+	scene_mgr.addObject(ground);
 
 	float angle_y = 0; //zadeklaruj zmienn¹ przechowuj¹c¹ aktualny k¹t obrotu
 	float angle_x = 0;

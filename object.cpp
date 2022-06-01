@@ -39,4 +39,9 @@ namespace Objects {
 	void Object::performMove(float time, float deltaTime) {
 		// Objects don't move on their own
 	}
+
+	void Object::draw(ShaderProgram* sp) {
+		auto M = makePositionMatrix();
+		model.draw(sp, texture, M);
+	}
 }
