@@ -36,6 +36,10 @@
     <ClCompile Include="shaderprogram.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
+    <ClCompile Include="file_model.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ground_model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h" />
@@ -77,6 +81,10 @@
     <ClInclude Include="shaderprogram.h">
       <Filter>Shader</Filter>
     </ClInclude>
+    <ClInclude Include="file_model.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ground_model.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shader_f.glsl">
