@@ -56,7 +56,7 @@ namespace Scene {
 
 
 		glm::mat4 V = glm::lookAt(pos, pos + dir, glm::vec3(0.0f, 1.0f, 0.0f)); //Wylicz macierz widoku
-		glm::mat4 P = glm::perspective(glm::radians(50.0f), 1.0f, 0.1f, 50.0f); //Wylicz macierz rzutowania
+		glm::mat4 P = glm::perspective(glm::radians(50.0f), wnd_ratio, 0.1f, 50.0f); //Wylicz macierz rzutowania
 
 
 		sp->use();//Activate shader program

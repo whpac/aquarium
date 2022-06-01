@@ -48,12 +48,12 @@ float sensitivity = 100.0f;
 
 void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	if (action == GLFW_PRESS) {
-		if (key == GLFW_KEY_LEFT) speed_y = 0.1;
-		if (key == GLFW_KEY_RIGHT) speed_y = -0.1;
-		if (key == GLFW_KEY_PAGE_UP) speed_x = 0.1;
-		if (key == GLFW_KEY_PAGE_DOWN) speed_x = -0.1;
-		if (key == GLFW_KEY_UP) ws = 0.1;
-		if (key == GLFW_KEY_DOWN) ws = -0.1;
+		if (key == GLFW_KEY_LEFT) speed_y = 1;
+		if (key == GLFW_KEY_RIGHT) speed_y = -1;
+		if (key == GLFW_KEY_PAGE_UP) speed_x = 1;
+		if (key == GLFW_KEY_PAGE_DOWN) speed_x = -1;
+		if (key == GLFW_KEY_UP) ws = 5;
+		if (key == GLFW_KEY_DOWN) ws = -5;
 
 
 		if (key == GLFW_MOUSE_BUTTON_LEFT)
@@ -178,11 +178,11 @@ int main(void)
 	//Main application loop
 	while (!glfwWindowShouldClose(scene_mgr.window)) //As long as the window shouldnt be closed yet...
 	{
+		double currentTime = glfwGetTime();
+		double deltaTime = currentTime - lastTime;
 
-
-		angle_y += speed_y/10 * glfwGetTime();
-
-		angle_x += speed_x/10 * glfwGetTime();
+		angle_y += speed_y * deltaTime;
+		angle_x += speed_x * deltaTime;
 
 		mat4 Mc = rotate(mat4(1.0f), angle_y, vec3(0, 1, 0));
 		Mc = rotate(Mc, angle_x, vec3(1, 0, 0));
@@ -191,11 +191,9 @@ int main(void)
 
 		vec3 mdir = normalize(vec3(dir.x, 0, dir.z));
 
-		pos += ws * (float)glfwGetTime() * mdir;
+		pos += ws * (float)deltaTime * mdir;
 
-		//glfwSetTime(0); //Wyzeruj licznik czasu
 		scene_mgr.draw();
-		double currentTime = glfwGetTime();
 		scene_mgr.performMoves(currentTime, currentTime - lastTime);
 		lastTime = currentTime;
 
