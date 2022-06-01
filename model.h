@@ -16,7 +16,6 @@ namespace Objects {
 		bool successful = false;
 
 		Model();
-		Model(const char* path);
 
 		float* getVerticesPointer();
 		float* getTextureCoordsPointer();

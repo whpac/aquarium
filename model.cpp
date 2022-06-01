@@ -5,10 +5,6 @@ namespace Objects {
 
 	Model::Model() {}
 
-	Model::Model(const char* path) {
-		successful = loadObj(path, vertices, texture_coords, normals);
-	}
-
 	float* Model::getVerticesPointer() {
 		return &vertices[0];
 	}
@@ -38,7 +34,7 @@ namespace Objects {
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture);
-		glUniform1i(sp->u("tex"), 0);
+		glUniform1i(sp->u("texture"), 0);
 		glDrawArrays(GL_TRIANGLES, 0, getVertexCount());
 
 		glDisableVertexAttribArray(sp->a("vertex"));
