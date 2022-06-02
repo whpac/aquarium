@@ -23,6 +23,7 @@ namespace Objects {
 
 	void Model::draw(ShaderProgram* sp, GLuint texture, glm::mat4 position_matrix) {
 		glUniformMatrix4fv(sp->u("M"), 1, false, glm::value_ptr(position_matrix));
+		glUniform4f(sp->u("tintColor"), 0, 0, 0.8, 1);
 
 		glEnableVertexAttribArray(sp->a("vertex"));
 		glEnableVertexAttribArray(sp->a("normal"));
