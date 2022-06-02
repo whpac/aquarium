@@ -172,7 +172,7 @@ int main(void)
 	auto fish = new Objects::Fish(tex, clownfish_model);
 	scene_mgr.addObject(fish);
 
-	auto ground_model = Objects::GroundModel();
+	auto ground_model = Objects::GroundModel(56);
 	auto ground = new Objects::Object(tex_sand, ground_model);
 	ground->setPosition(0, -5, 0);
 	scene_mgr.addObject(ground);
@@ -199,6 +199,8 @@ int main(void)
 		vec3 mdir = normalize(vec3(dir.x, 0, dir.z));
 
 		pos += ws * (float)deltaTime * mdir;
+
+		ground->setPosition(pos.x - fmod(pos.x, 4), ground->y, pos.z - fmod(pos.z, 4));
 
 		scene_mgr.draw();
 		scene_mgr.performMoves(currentTime, currentTime - lastTime);

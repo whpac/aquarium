@@ -2,23 +2,25 @@
 
 namespace Objects {
 
-	GroundModel::GroundModel() {
+	GroundModel::GroundModel(float size) {
 		vertices = {
-			-10, 0, -10, 1,
-			-10, 0,  10, 1,
-			 10, 0,  10, 1,
-			-10, 0, -10, 1,
-			 10, 0, -10, 1,
-			 10, 0,  10, 1
+			-size, 0, -size, 1,
+			-size, 0,  size, 1,
+			 size, 0,  size, 1,
+			-size, 0, -size, 1,
+			 size, 0, -size, 1,
+			 size, 0,  size, 1
 		};
+
+		float t = size / 2;
 
 		texture_coords = {
 			0, 0,
-			0, 1,
-			1, 1,
+			0, t,
+			t, t,
 			0, 0,
-			1, 0,
-			1, 1
+			t, 0,
+			t, t
 		};
 
 		normals = {

@@ -7,7 +7,7 @@ namespace Objects {
 	class GroundModel : public Model {
 
 	public:
-		GroundModel();
+		GroundModel(float size = 12);
 	};
 }
 
