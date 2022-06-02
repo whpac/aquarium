@@ -189,7 +189,7 @@ int main(void)
 		double deltaTime = currentTime - lastTime;
 
 		angle_y += speed_y * deltaTime;
-		angle_x += speed_x * deltaTime;
+		angle_x = glm::clamp(angle_x + speed_x * (float)deltaTime, -PI/2 + 0.001f, PI/2 - 0.001f);
 
 		mat4 Mc = rotate(mat4(1.0f), angle_y, vec3(0, 1, 0));
 		Mc = rotate(Mc, angle_x, vec3(1, 0, 0));
