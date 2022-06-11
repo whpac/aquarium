@@ -9,8 +9,8 @@ namespace Objects {
 
 	void Fish::draw(ShaderProgram* sp) {
 		auto M = makePositionMatrix();
-		M = glm::rotate(M, -PI / 2, glm::vec3(0, 1, 0));
-		M = glm::scale(M, glm::vec3(0.5, 0.5, 0.5));
+		//M = glm::rotate(M, -PI / 2, glm::vec3(0, 1, 0));
+		//M = glm::scale(M, glm::vec3(0.5, 0.5, 0.5));
 
 		model.draw(sp, texture, M);
 	}

@@ -55,16 +55,13 @@ void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
 		if (key == GLFW_KEY_PAGE_DOWN) speed_x = -1;
 		if (key == GLFW_KEY_UP) ws = 5;
 		if (key == GLFW_KEY_DOWN) ws = -5;
-
-
-		if (key == GLFW_MOUSE_BUTTON_LEFT)
-		{
+		
+		if (key == GLFW_MOUSE_BUTTON_LEFT){
 			// Hides mouse cursor
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
 			// Prevents camera from jumping on the first click
-			if (firstClick)
-			{
+			if (firstClick){
 				glfwSetCursorPos(window, (WND_WIDTH / 2), (WND_HEIGHT / 2));
 				firstClick = false;
 			}
@@ -84,8 +81,7 @@ void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
 			glm::vec3 newOrientation = glm::rotate(dir, glm::radians(-rotX), glm::normalize(glm::cross(dir,Up)));
 
 			// Decides whether or not the next vertical Orientation is legal or not
-			if (abs(glm::angle(newOrientation,Up) - glm::radians(90.0f)) <= glm::radians(85.0f))
-			{
+			if (abs(glm::angle(newOrientation,Up) - glm::radians(90.0f)) <= glm::radians(85.0f)){
 				dir = newOrientation;
 			}
 
@@ -114,8 +110,7 @@ void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
 
 		if (key == GLFW_KEY_PAGE_UP) speed_x = 0;
 		if (key == GLFW_KEY_PAGE_DOWN) speed_x = -0;
-		if (key == GLFW_MOUSE_BUTTON_LEFT)
-		{
+		if (key == GLFW_MOUSE_BUTTON_LEFT){
 			// Unhides cursor since camera is not looking around anymore
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 			// Makes sure the next time the camera looks around it doesn't jump
@@ -166,16 +161,74 @@ int main(void)
 	scene_mgr.init();
 	GLuint tex = scene_mgr.readTexture("textures/clownfish.png");
 	GLuint tex_sand = scene_mgr.readTexture("textures/Sand_COLOR.png");
-	scene_mgr.setShaderProgram(sp);
 
-	auto clownfish_model = Objects::FileModel("clownfish.obj");
-	auto fish = new Objects::Fish(tex, clownfish_model);
-	scene_mgr.addObject(fish);
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+	GLuint tex_fish_2 = scene_mgr.readTexture("textures/Tiger_barb_diff.png");
+	GLuint tex_fish_3 = scene_mgr.readTexture("textures/12988_Electric_Yellow_Cichlid_diff.png");
+	GLuint tex_coral_1 = scene_mgr.readTexture("textures/model.png");
+	GLuint tex_coral_2 = scene_mgr.readTexture("textures/12.png");
+	GLuint tex_coral_3 = scene_mgr.readTexture("textures/Coral-Academy_material_1.png");
+	GLuint tex_coral_4 = scene_mgr.readTexture("textures/RowanMcLachlan_Coral-1.png");
+
+	scene_mgr.setShaderProgram(sp);
+	for (int i = 0; i < 1; i++) {
+		auto clownfish_model = Objects::FileModel("clownfish.obj");
+		auto fish = new Objects::Fish(tex, clownfish_model);
+		fish->setPosition(rand() % 60, rand() % 20 - 5, rand() % 60);
+		scene_mgr.addObject(fish);
+	}
+
 
 	auto ground_model = Objects::GroundModel(56);
 	auto ground = new Objects::Object(tex_sand, ground_model);
 	ground->setPosition(0, -5, 0);
 	scene_mgr.addObject(ground);
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		auto Coral_model_1 = Objects::FileModel("untitled.obj");
+		auto Coral_1 = new Objects::Object(tex_coral_1, Coral_model_1);
+		Coral_1->setPosition(0,  -5,0);
+		scene_mgr.addObject(Coral_1);
+
+		for (int i = 0; i < 1; i++) {
+			auto Coral_model_2 = Objects::FileModel("coral2.obj");
+			auto Coral_2 = new Objects::Object(tex_coral_2, Coral_model_2);
+			Coral_2->setPosition(rand() % 80, -5, rand() % 80);
+			scene_mgr.addObject(Coral_2);
+		}
+
+		for (int i = 0; i < 1; i++) {
+			auto Coral_model_3 = Objects::FileModel("coral3.obj");
+			auto Coral_3 = new Objects::Object(tex_coral_3, Coral_model_3);
+			Coral_3->setPosition(rand() % 80,-5.4, rand() % 80);
+			scene_mgr.addObject(Coral_3);
+		}
+
+		for (int i = 0; i < 1; i++) {
+			auto Coral_model_4 = Objects::FileModel("coral4.obj");
+			auto Coral_4 = new Objects::Object(tex_coral_4, Coral_model_4);
+			Coral_4->setPosition(rand() % 100, rand() % 10 -15, rand() % 200);
+			scene_mgr.addObject(Coral_4);
+		}
+	
+	for (int i = 0; i < 1; i++) {
+		auto Coral_model = Objects::FileModel("barb.obj");
+		auto Coral_1 = new Objects::Fish(tex_fish_2, Coral_model);
+		Coral_1->setPosition(rand() % 60, rand() % 20 -5, rand() % 60);
+		scene_mgr.addObject(Coral_1);
+	}
+
+	for (int i = 0; i < 1; i++) {
+		auto Coral_model = Objects::FileModel("yellowelectric.obj");
+		auto Coral_1 = new Objects::Fish(tex_fish_3, Coral_model);
+		Coral_1->setPosition(rand() % 60, rand() % 20 - 5, rand() % 60);
+		scene_mgr.addObject(Coral_1);
+	}
+
 
 	float angle_y = 0; //zadeklaruj zmienn¹ przechowuj¹c¹ aktualny k¹t obrotu
 	float angle_x = 0;
@@ -195,12 +248,15 @@ int main(void)
 		Mc = rotate(Mc, angle_x, vec3(1, 0, 0));
 		vec4 dir_ = Mc * vec4(0, 0, 1, 0);
 		dir = vec3(dir_);
-
+		
 		vec3 mdir = normalize(vec3(dir.x, 0, dir.z));
 
 		pos += ws * (float)deltaTime * mdir;
-
+		
 		ground->setPosition(pos.x - fmod(pos.x, 4), ground->y, pos.z - fmod(pos.z, 4));
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//Coral->setPosition(pos.x - fmod(pos.x, 30), Coral->y, pos.z - fmod(pos.z, 30));
 
 		scene_mgr.draw();
 		scene_mgr.performMoves(currentTime, currentTime - lastTime);
@@ -213,6 +269,8 @@ int main(void)
 	delete sp;
 
 	glDeleteTextures(1, &tex);
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//glDeleteTextures(1, &tex_coral_1);
 	glfwTerminate(); //Free GLFW resources
 	exit(EXIT_SUCCESS);
 }
