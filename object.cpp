@@ -6,7 +6,7 @@
 
 namespace Objects {
 
-	Object::Object(GLuint texture, Model& model) {
+	Object::Object(GLuint texture, Model* model) {
 		this->texture = texture;
 		this->model = model;
 	}
@@ -16,6 +16,7 @@ namespace Objects {
 		M = glm::translate(M, glm::vec3(x, y, z));
 		M = glm::rotate(M, rotSide, glm::vec3(0, 1, 0));
 		M = glm::rotate(M, rotUp, glm::vec3(0, 0, 1));
+		M = glm::scale(M, glm::vec3(scale, scale, scale));
 		return M;
 	}
 
@@ -30,6 +31,10 @@ namespace Objects {
 		this->rotUp = up;
 	}
 
+	void Object::setScale(float scale) {
+		this->scale = scale;
+	}
+
 	void Object::move(float dist) {
 		this->x += dist * cos(this->rotUp) * cos(this->rotSide);
 		this->y += dist * sin(this->rotUp);
@@ -42,6 +47,6 @@ namespace Objects {
 
 	void Object::draw(ShaderProgram* sp) {
 		auto M = makePositionMatrix();
-		model.draw(sp, texture, M);
+		model->draw(sp, texture, M);
 	}
 }

@@ -53,8 +53,8 @@ void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
 		if (key == GLFW_KEY_RIGHT) speed_y = -1;
 		if (key == GLFW_KEY_PAGE_UP) speed_x = 1;
 		if (key == GLFW_KEY_PAGE_DOWN) speed_x = -1;
-		if (key == GLFW_KEY_UP) ws = 5;
-		if (key == GLFW_KEY_DOWN) ws = -5;
+		if (key == GLFW_KEY_UP) ws = 7;
+		if (key == GLFW_KEY_DOWN) ws = -7;
 		
 		if (key == GLFW_MOUSE_BUTTON_LEFT){
 			// Hides mouse cursor
@@ -159,74 +159,86 @@ int main(void)
 
 	// Initialize the scene and set shader program
 	scene_mgr.init();
-	GLuint tex = scene_mgr.readTexture("textures/clownfish.png");
 	GLuint tex_sand = scene_mgr.readTexture("textures/Sand_COLOR.png");
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-	GLuint tex_fish_2 = scene_mgr.readTexture("textures/Tiger_barb_diff.png");
-	GLuint tex_fish_3 = scene_mgr.readTexture("textures/12988_Electric_Yellow_Cichlid_diff.png");
+	GLuint tex_clownfish = scene_mgr.readTexture("textures/clownfish.png");
+	GLuint tex_barbfish = scene_mgr.readTexture("textures/Tiger_barb_diff.png");
+	GLuint tex_ye_fish = scene_mgr.readTexture("textures/12988_Electric_Yellow_Cichlid_diff.png");
 	GLuint tex_coral_1 = scene_mgr.readTexture("textures/model.png");
 	GLuint tex_coral_2 = scene_mgr.readTexture("textures/12.png");
 	GLuint tex_coral_3 = scene_mgr.readTexture("textures/Coral-Academy_material_1.png");
 	GLuint tex_coral_4 = scene_mgr.readTexture("textures/RowanMcLachlan_Coral-1.png");
 
 	scene_mgr.setShaderProgram(sp);
-	for (int i = 0; i < 1; i++) {
-		auto clownfish_model = Objects::FileModel("clownfish.obj");
-		auto fish = new Objects::Fish(tex, clownfish_model);
-		fish->setPosition(rand() % 60, rand() % 20 - 5, rand() % 60);
-		scene_mgr.addObject(fish);
-	}
-
-
 	auto ground_model = Objects::GroundModel(56);
-	auto ground = new Objects::Object(tex_sand, ground_model);
+	auto ground = new Objects::Object(tex_sand, &ground_model);
 	ground->setPosition(0, -5, 0);
 	scene_mgr.addObject(ground);
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		auto Coral_model_1 = Objects::FileModel("untitled.obj");
-		auto Coral_1 = new Objects::Object(tex_coral_1, Coral_model_1);
-		Coral_1->setPosition(0,  -5,0);
-		scene_mgr.addObject(Coral_1);
-
-		for (int i = 0; i < 1; i++) {
-			auto Coral_model_2 = Objects::FileModel("coral2.obj");
-			auto Coral_2 = new Objects::Object(tex_coral_2, Coral_model_2);
-			Coral_2->setPosition(rand() % 80, -5, rand() % 80);
-			scene_mgr.addObject(Coral_2);
-		}
-
-		for (int i = 0; i < 1; i++) {
-			auto Coral_model_3 = Objects::FileModel("coral3.obj");
-			auto Coral_3 = new Objects::Object(tex_coral_3, Coral_model_3);
-			Coral_3->setPosition(rand() % 80,-5.4, rand() % 80);
-			scene_mgr.addObject(Coral_3);
-		}
-
-		for (int i = 0; i < 1; i++) {
-			auto Coral_model_4 = Objects::FileModel("coral4.obj");
-			auto Coral_4 = new Objects::Object(tex_coral_4, Coral_model_4);
-			Coral_4->setPosition(rand() % 100, rand() % 10 -15, rand() % 200);
-			scene_mgr.addObject(Coral_4);
-		}
-	
-	for (int i = 0; i < 1; i++) {
-		auto Coral_model = Objects::FileModel("barb.obj");
-		auto Coral_1 = new Objects::Fish(tex_fish_2, Coral_model);
-		Coral_1->setPosition(rand() % 60, rand() % 20 -5, rand() % 60);
-		scene_mgr.addObject(Coral_1);
+	auto clownfish_model = Objects::FileModel("models/clownfish.obj");
+	for (int i = 0; i < 10; i++) {
+		auto fish = new Objects::Fish(tex_clownfish, &clownfish_model);
+		fish->setPosition(rand() % 80 - 40, rand() % 20 - 5, rand() % 80 - 40);
+		fish->setRotation((float)fmod(rand(), 2*PI), 0);
+		float scale = 0.5 + (rand() % 100) / 100.0;
+		fish->setScale(scale);
+		scene_mgr.addObject(fish);
 	}
 
-	for (int i = 0; i < 1; i++) {
-		auto Coral_model = Objects::FileModel("yellowelectric.obj");
-		auto Coral_1 = new Objects::Fish(tex_fish_3, Coral_model);
-		Coral_1->setPosition(rand() % 60, rand() % 20 - 5, rand() % 60);
-		scene_mgr.addObject(Coral_1);
+	auto barb_model = Objects::FileModel("models/barb.obj");
+	for (int i = 0; i < 10; i++) {
+		auto barb = new Objects::Fish(tex_barbfish, &barb_model);
+		barb->setPosition(rand() % 60 - 30, rand() % 20 - 5, rand() % 60 - 30);
+		barb->setRotation((float)fmod(rand(), 2 * PI), 0);
+		float scale = 0.5 + (rand() % 100) / 100.0;
+		barb->setScale(scale);
+		scene_mgr.addObject(barb);
+	}
+
+	auto ye_model = Objects::FileModel("models/yellowelectric.obj");
+	for (int i = 0; i < 10; i++) {
+		auto ye = new Objects::Fish(tex_ye_fish, &ye_model);
+		ye->setPosition(rand() % 60 - 30, rand() % 20 - 5, rand() % 60 - 30);
+		ye->setRotation(fmod((float)rand(), 2 * PI), 0);
+		float scale = 0.5 + (rand() % 100) / 100.0;
+		ye->setScale(scale);
+		scene_mgr.addObject(ye);
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		/*auto Coral_model_1 = Objects::FileModel("untitled.obj");
+		auto Coral_1 = new Objects::Object(tex_coral_1, Coral_model_1);
+		Coral_1->setPosition(0,  -5,0);
+		scene_mgr.addObject(Coral_1);*/
+
+	auto Coral_model_2 = Objects::FileModel("models/coral2.obj");
+	for (int i = 0; i < 20; i++) {
+		auto Coral_2 = new Objects::Object(tex_coral_2, &Coral_model_2);
+		Coral_2->setPosition(rand() % 80, -5.1, rand() % 80);
+		float scale = 0.5 + (rand() % 100) / 100.0;
+		Coral_2->setScale(scale);
+		scene_mgr.addObject(Coral_2);
+	}
+
+	auto Coral_model_3 = Objects::FileModel("models/coral3.obj");
+	for (int i = 0; i < 20; i++) {
+		auto Coral_3 = new Objects::Object(tex_coral_3, &Coral_model_3);
+		float scale = 0.5 + (rand() % 100) / 100.0;
+		Coral_3->setPosition(rand() % 80,-7 + scale, rand() % 80);
+		Coral_3->setScale(scale);
+		scene_mgr.addObject(Coral_3);
+	}
+
+	auto Coral_model_4 = Objects::FileModel("models/coral4.obj");
+	for (int i = 0; i < 10; i++) {
+		auto Coral_4 = new Objects::Object(tex_coral_4, &Coral_model_4);
+		float scale = 0.3 + (rand() % 100) / 200.0;
+		Coral_4->setPosition(rand() % 100, rand() % 5 - 10 + 7 * scale, rand() % 200);
+		Coral_4->setScale(scale);
+		scene_mgr.addObject(Coral_4);
 	}
 
 
@@ -268,7 +280,7 @@ int main(void)
 	scene_mgr.destroy();
 	delete sp;
 
-	glDeleteTextures(1, &tex);
+	glDeleteTextures(1, &tex_clownfish);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//glDeleteTextures(1, &tex_coral_1);
 	glfwTerminate(); //Free GLFW resources
