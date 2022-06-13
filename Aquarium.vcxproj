@@ -19,40 +19,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="allmodels.h" />
     <ClInclude Include="constants.h" />
-    <ClInclude Include="cube.h" />
     <ClInclude Include="file_model.h" />
     <ClInclude Include="fish.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="ground_model.h" />
     <ClInclude Include="lodepng.h" />
-    <ClInclude Include="basic_model.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="model_loader.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="scene_mgr.h" />
     <ClInclude Include="shaderprogram.h" />
-    <ClInclude Include="sphere.h" />
-    <ClInclude Include="teapot.h" />
-    <ClInclude Include="torus.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cube.cpp" />
     <ClCompile Include="file_model.cpp" />
     <ClCompile Include="fish.cpp" />
     <ClCompile Include="ground_model.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main_file.cpp" />
-    <ClCompile Include="basic_model.cpp" />
     <ClCompile Include="model.cpp" />
     <ClCompile Include="model_loader.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="scene_mgr.cpp" />
     <ClCompile Include="shaderprogram.cpp" />
-    <ClCompile Include="sphere.cpp" />
-    <ClCompile Include="teapot.cpp" />
-    <ClCompile Include="torus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shader_f.glsl" />

@@ -18,28 +18,15 @@
     <ClCompile Include="scene_mgr.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="basic_model.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
-    <ClCompile Include="cube.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
-    <ClCompile Include="sphere.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
-    <ClCompile Include="teapot.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
-    <ClCompile Include="torus.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
     <ClCompile Include="shaderprogram.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
     <ClCompile Include="file_model.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
-    <ClCompile Include="ground_model.cpp" />
+    <ClCompile Include="ground_model.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h" />
@@ -60,31 +47,15 @@
     <ClInclude Include="scene_mgr.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="allmodels.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="basic_model.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="cube.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="sphere.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="teapot.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="torus.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="shaderprogram.h">
       <Filter>Shader</Filter>
     </ClInclude>
     <ClInclude Include="file_model.h">
       <Filter>Objects</Filter>
     </ClInclude>
-    <ClInclude Include="ground_model.h" />
+    <ClInclude Include="ground_model.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader_f.glsl">
@@ -100,9 +71,6 @@
     </Filter>
     <Filter Include="Objects">
       <UniqueIdentifier>{c05fb20c-9c53-4add-aff8-eaef238694a7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models">
-      <UniqueIdentifier>{077a5d15-7f2d-4050-8b19-d458229052a7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Shader">
       <UniqueIdentifier>{42f32b48-84ae-4d59-ba3a-04fbe8a494a7}</UniqueIdentifier>
