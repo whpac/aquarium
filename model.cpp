@@ -35,7 +35,7 @@ namespace Objects {
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture);
-		glUniform1i(sp->u("texture"), 0);
+		glUniform1i(sp->u("texture1"), 0);
 		glDrawArrays(GL_TRIANGLES, 0, getVertexCount());
 
 		glDisableVertexAttribArray(sp->a("vertex"));

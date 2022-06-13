@@ -1,7 +1,7 @@
 #version 330
 
 
-uniform sampler2D texture;
+uniform sampler2D texture1;
 
 uniform vec4 obsPos = vec4(0, 0, 0, 1);
 uniform vec4 tintColor = vec4(0, 0, 0, 1);
@@ -16,7 +16,7 @@ in vec4 sunlight;
 in vec4 torchlight;
 
 void main(void) {
-	vec4 color = texture(texture, i_tc);
+	vec4 color = texture(texture1, i_tc);
 	if(color.a < 0.1)
 		discard;
 

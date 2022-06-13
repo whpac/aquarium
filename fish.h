@@ -14,7 +14,9 @@ namespace Objects {
         float rotateTarget = 0;
 
     public:
-        Fish(GLuint texture, Model& model) : Object(texture, model) {}
+        Fish(GLuint texture, Model* model) : Object(texture, model) {}
+
+        void setRotation(float side, float up);
         virtual void draw(ShaderProgram* sp) override;
         virtual void performMove(float time, float deltaTime) override;
     };

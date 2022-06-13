@@ -9,10 +9,8 @@ namespace Objects {
 
 	void Fish::draw(ShaderProgram* sp) {
 		auto M = makePositionMatrix();
-		M = glm::rotate(M, -PI / 2, glm::vec3(0, 1, 0));
-		M = glm::scale(M, glm::vec3(0.5, 0.5, 0.5));
 
-		model.draw(sp, texture, M);
+		model->draw(sp, texture, M);
 	}
 
 	void Fish::performMove(float time, float deltaTime) {
@@ -41,5 +39,11 @@ namespace Objects {
 
 		this->rotSide = direction + direction_mod + sin(time) * PI / 24;
 		this->move(velocity * deltaTime);
+	}
+
+	void Fish::setRotation(float side, float up) {
+		this->rotSide = side;
+		this->rotUp = up;
+		this->direction = side;
 	}
 }
