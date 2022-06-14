@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
-#include "allmodels.h"
 #include "constants.h"
 #include "fish.h"
 #include "lodepng.h"
