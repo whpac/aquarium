@@ -18,8 +18,8 @@
 #include "file_model.h"
 #include "ground_model.h"
 #include "global.h"
-#include<glm/gtx/rotate_vector.hpp>
-#include<glm/gtx/vector_angle.hpp>
+#include <glm/gtx/rotate_vector.hpp>
+#include <glm/gtx/vector_angle.hpp>
 
 #define WND_WIDTH 1000
 #define WND_HEIGHT 800
