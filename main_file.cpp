@@ -251,7 +251,7 @@ int main(void)
 		vec4 dir_ = Mc * vec4(0, 0, 1, 0);
 		dir = vec3(dir_);
 		
-		vec3 mdir = normalize(vec3(dir.x, 0, dir.z));
+		vec3 mdir = normalize(vec3(dir.x, dir.y, dir.z));
 
 		pos += ws * (float)deltaTime * mdir;
 		
